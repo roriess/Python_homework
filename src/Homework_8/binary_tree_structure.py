@@ -5,3 +5,4 @@ class Tree(object):
     
     def children(self):
         return (self.left, self.right)
+    
