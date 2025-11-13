@@ -2,7 +2,7 @@ from binary_tree_structure import Tree
 from huffman import huffman
 
 
-def dictionary(string):
+def dictionary(string: str) -> dict[str, str]:
     freq = {}
     for elm in string:
         freq[elm] = freq[elm] + 1 if elm in freq else 1
@@ -24,21 +24,19 @@ def dictionary(string):
     return huffman(root)
 
 
-def encode(string):
+def encode(string: str) -> tuple[str, dict[str, str]]:
     encoded_message = ''
     huffman_code = dictionary(string)
 
     for elm in string:
         encoded_message += huffman_code[elm]
 
-    return encoded_message
+    return encoded_message, huffman_code
 
 
-def decode(string, encode_message):
-    huffman_dict = dictionary(string)
+def decode(encode_message: str, huffman_dict: dict[str, str]) -> str:
     reversed_huffman_dict = {v: k for k, v in huffman_dict.items()} 
     decode_message = ''
-    print(huffman_dict.items())
 
     current_elm = ''
     for i in range(0, len(encode_message)):
@@ -52,8 +50,8 @@ def decode(string, encode_message):
 
 string = 'there should be text that needs to be encoded'
 
-encode_message = encode(string)
-print(f'encoded message: {encode_message}')
+encode_message, dict = encode(string)
+print(f'encoded message: {encode_message}\n\ndictionary: {dict}\n')
 
-decode_message = decode(string, encode_message)
+decode_message = decode(encode_message, dictionary(string))
 print(f'decode message: {decode_message}')
