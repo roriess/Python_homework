@@ -1,6 +1,7 @@
 from binary_tree_structure import Tree
 from huffman import huffman
 
+
 def dictionary(string):
     freq = {}
     for elm in string:
@@ -47,9 +48,6 @@ def decode(string, encode_message):
             current_elm = ''
 
     return decode_message
-
-
-
 
 
 string = 'there should be text that needs to be encoded'
