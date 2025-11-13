@@ -42,7 +42,7 @@ def decode(encode_message: str, huffman_dict: dict[str, str]) -> str:
     for i in range(0, len(encode_message)):
         current_elm += encode_message[i]
         if current_elm in huffman_dict.values():
-            decode_message += reversed_huffman_dict.get(current_elm)
+            decode_message += reversed_huffman_dict[current_elm]
             current_elm = ''
 
     return decode_message
