@@ -29,4 +29,7 @@ class Graph:
                 if neighbor not in visited and neighbor not in stack:
                     stack.insert(0, neighbor)
 
-        return visited  
+        return visited
+    
+    def __iter__(self):
+        return iter(self.dfs())
