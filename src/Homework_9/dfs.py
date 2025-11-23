@@ -13,32 +13,20 @@ class Graph:
     def get_neighbors(self, node):
         return self.nodes.get(node, [])
     
+    def dfs(self) -> list:
+        visited = []
+        stack = []
 
-def dfs(graph: Graph) -> list:
-    visited = []
-    stack = []
+        start_node = list(self.nodes.keys())[0]
+        stack.insert(0, start_node)
 
-    start_node = list(graph.nodes.keys())[0]
-    stack.insert(0, start_node)
+        while stack:
+            node = stack.pop(0)
+            if node not in visited:
+                visited.append(node)
+                
+            for neighbor in self.get_neighbors(node):
+                if neighbor not in visited and neighbor not in stack:
+                    stack.insert(0, neighbor)
 
-    while stack:
-        node = stack.pop(0)
-        if node not in visited:
-            visited.append(node)
-            
-        for neighbor in graph.get_neighbors(node):
-            if neighbor not in visited and neighbor not in stack:
-                stack.insert(0, neighbor)
-
-    return visited  
-
-
-graph = Graph()
-graph.add_node("A")
-graph.add_node("B")
-graph.add_node("C")
-graph.add_edge("A", "C")
-graph.add_edge("C", "B")
-
-
-print(dfs(graph))
+        return visited  
