@@ -23,7 +23,7 @@ jobs:
 
       - name: Run Ruff format
         run: |
-          ruff format .
+          ruff format . --check
           
       - name: Run Ruff linter
         run: |
