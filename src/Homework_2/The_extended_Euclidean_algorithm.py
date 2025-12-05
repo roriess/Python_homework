@@ -5,11 +5,13 @@ def extended_gcd(a, b):
 
     while remainder != 0:
         quotient = old_remainder // remainder
-        old_remainder, remainder = remainder, old_remainder - quotient * remainder
+        old_remainder, remainder = remainder, \
+            old_remainder - quotient * remainder
         old_s, s = s, old_s - quotient * s
         old_t, t = t, old_t - quotient * t
 
-    return f'Decomposition of Bezu: {a}*{old_s} + {b}*{old_t} = {old_remainder}'
+    return f'Decomposition of Bezu: {a}*{old_s} \
+        + {b}*{old_t} = {old_remainder}'
 
 
 a, b = map(int, input("Enter 'a' and 'b' separated by a space: ").split())

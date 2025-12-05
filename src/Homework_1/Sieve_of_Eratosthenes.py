@@ -9,9 +9,11 @@ def sieve_of_eratosthenes(n):
 
     simple_numbers = []
     for x in range(n + 1):
-        if all_number[x] == True: simple_numbers.append(x)
-    
+        if all_number[x] is True:
+            simple_numbers.append(x)
+
     return simple_numbers
 
 
-print(*sieve_of_eratosthenes(n = int(input())))
+n = int(input())
+print(*sieve_of_eratosthenes(n))
