@@ -8,10 +8,14 @@ def curry(func, n):
     else:
         raise ValueError("Incorrect n was transmitted")
 
+
 def uncurry(func, n):
-    def uncurried(*args):
-        res = func
-        for arg in args:
-            res = res(arg)
-        return res
-    return uncurried
+    if int(n) == n and n > 0 and func.__code__.co_argcount == n:
+        def uncurried(*args):
+            res = func
+            for arg in args:
+                res = res(arg)
+            return res
+        return uncurried
+    else:
+        raise ValueError("Incorrect n was transmitted")
