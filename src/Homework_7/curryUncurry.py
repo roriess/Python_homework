@@ -1,5 +1,5 @@
 def curry(func, n):
-    if isinstance(n, int) and n >= 0:
+    if isinstance(n, int) and n >= 0 and func.__code__.co_argcount >= n:
         def curried(*args):
             if len(args) >= n:
                 if n == 0:
