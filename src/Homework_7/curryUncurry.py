@@ -5,5 +5,13 @@ def curry(func, n):
                 return func(*args)
             return lambda *args2: curried(*(args + args2)) # если было передано недостаточно аргументов
         return curried
-    else: 
+    else:
         raise ValueError("Incorrect n was transmitted")
+
+def uncurry(func, n):
+    def uncurried(*args):
+        res = func
+        for arg in args:
+            res = res(arg)
+        return res
+    return uncurried
