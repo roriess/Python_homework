@@ -1,5 +1,5 @@
 def curry(func, n):
-    if int(n) == n and n > 0 and func.__code__.co_argcount == n:
+    if isinstance(n, int) and n >= 0 and func.__code__.co_argcount >= n:
         def curried(*args):
             if len(args) >= func.__code__.co_argcount:
                 return func(*args)
@@ -10,12 +10,15 @@ def curry(func, n):
 
 
 def uncurry(func, n):
-    if int(n) == n and n > 0 and func.__code__.co_argcount == n:
+    if isinstance(n, int) and n >= 0:
         def uncurried(*args):
-            res = func
-            for arg in args:
-                res = res(arg)
-            return res
+            if len(args) == n:
+                res = func
+                for arg in args:
+                    res = res(arg)
+                return res
+            else:
+                raise ValueError("Incorrect n was transmitted")
         return uncurried
     else:
         raise ValueError("Incorrect n was transmitted")
