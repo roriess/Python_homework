@@ -78,7 +78,7 @@ class BinHeap:
             cur = cur.sibling
 
         return min_node.value if min_node.value is not None else min_node.key
-    
+
 
     def decreaseKey(self, node, new_key):
         if new_key > node.key:
