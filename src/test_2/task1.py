@@ -7,9 +7,11 @@ class BinTree:
         self.sibling = None # указатель на правого брата узла
         self.degree = 0 # степень узла (количество дочерних узлов данного узла)
 
+
 class BinHeap:
     def __init__(self):
         self.head = None # указатель на корень биномиального дерева минимального порядка этой кучи
+
 
     def merge(self, other):
         if not self.head:
@@ -76,3 +78,18 @@ class BinHeap:
             cur = cur.sibling
 
         return min_node.value if min_node.value is not None else min_node.key
+    
+
+    def decreaseKey(self, node, new_key):
+        if new_key > node.key:
+            raise ValueError(f"New key {new_key} must be smaller than current key {node.key}")
+        
+        node.key = new_key
+        parent = node.parent
+
+        while parent and node.key < parent.key:
+            node.key, parent.key = parent.key, node.key
+            node.value, parent.value = parent.value, node.value
+
+        node = parent
+        parent = node.parent
