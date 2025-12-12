@@ -1,4 +1,3 @@
-import pytest
 from task1 import BinTree, BinHeap
 
 
@@ -31,7 +30,8 @@ def test_single_insert(self):
     assert heap.head.key == 10
     assert heap.head.value == "A"
     assert heap.head.degree == 0
-    
+
+
 def test_multiple_inserts(self):
     heap = BinHeap()
     heap.insert(30)
