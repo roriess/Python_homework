@@ -11,7 +11,6 @@ def sieve_of_eratosthenes(n):
     for x in range(n + 1):
         if all_number[x] is True:
             simple_numbers.append(x)
-
     return simple_numbers
 
 
